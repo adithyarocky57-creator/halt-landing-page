@@ -178,34 +178,14 @@ function PixelCanvas({ colors, gap = 5, speed = 30 }: PixelCanvasProps) {
   }, [init, animate]);
 
   return (
-    <div ref={wrapRef} className="absolute inset-0 overflow-hidden">
+    <div ref={wrapRef} className="fixed inset-0 top-0 left-0 w-screen h-screen z-0 pointer-events-none overflow-hidden">
       <canvas ref={canvasRef} className="block w-full h-full" />
     </div>
   );
 }
 
 export function PixelPerfectBg() {
-  const [themeColors, setThemeColors] = useState<string[]>([]);
-
-  useEffect(() => {
-    if (typeof document === "undefined") return;
-
-    // Get theme colors
-    const div = document.createElement("div");
-    document.body.appendChild(div);
-    div.className = "text-muted-foreground";
-    const muted = getComputedStyle(div).color;
-    div.className = "text-primary";
-    const primary = getComputedStyle(div).color;
-    document.body.removeChild(div);
-    
-    setThemeColors([muted, muted, muted, muted, primary]);
-  }, []);
-
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-      {themeColors.length > 0 && <PixelCanvas colors={themeColors} gap={6} speed={30} />}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,var(--background)_100%)] pointer-events-none opacity-80" />
-    </div>
+    <PixelCanvas colors={['#ffffff']} gap={6} speed={30} />
   );
 }

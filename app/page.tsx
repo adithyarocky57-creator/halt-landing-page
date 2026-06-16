@@ -3,7 +3,7 @@ import { HeroSection } from '@/components/HeroSection'
 import { PhilosophySection } from '@/components/PhilosophySection'
 import { MechanismSection } from '@/components/MechanismSection'
 import { ComingSoonSection } from '@/components/ComingSoonSection'
-import { SimplePixelBg } from '@/components/SimplePixelBg'
+import { BackgroundPaths } from '@/components/ui/background-paths'
 
 export const metadata = {
   title: 'halt. - Digital Willpower is a Lie',
@@ -14,7 +14,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="bg-black relative">
-      <SimplePixelBg />
+      <BackgroundPaths />
       <div className="relative z-10">
         <Navigation />
         <HeroSection />
